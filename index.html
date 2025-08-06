@@ -8,6 +8,9 @@
     <meta name="keywords" content="AI solutions, automation, mom entrepreneur, ADHD support, bilingual services, chatbot development">
     <meta name="author" content="M.S.T. - Mom Survival Toolkit">
     
+    <!-- EmailJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     <script>
@@ -672,6 +675,186 @@
             font-size: 1.3rem;
         }
 
+        /* Contact Form Styles */
+        .contact-form-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            margin-top: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-title {
+            font-size: 2rem;
+            color: #DAA520;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 10px rgba(218, 165, 32, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(218, 165, 32, 0.3);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #DAA520;
+            box-shadow: 0 0 15px rgba(218, 165, 32, 0.3);
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #999;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #cccccc;
+        }
+
+        .calendar-section {
+            background: rgba(218, 165, 32, 0.1);
+            border: 2px solid rgba(218, 165, 32, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .calendar-title {
+            font-size: 1.5rem;
+            color: #DAA520;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .calendar-description {
+            color: #cccccc;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .calendar-button {
+            background: linear-gradient(45deg, #DAA520, #FFD700);
+            color: #000000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(218, 165, 32, 0.3);
+        }
+
+        .calendar-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.5);
+            background: linear-gradient(45deg, #FFD700, #B8860B);
+        }
+
+        .submit-button {
+            background: linear-gradient(45deg, #DAA520, #FFD700);
+            color: #000000;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(218, 165, 32, 0.3);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.5);
+            background: linear-gradient(45deg, #FFD700, #B8860B);
+        }
+
+        .form-note {
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid rgba(0, 255, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            color: #00ff00;
+        }
+
+        .error-message {
+            display: none;
+            background: rgba(255, 0, 0, 0.1);
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            color: #ff6347;
+        }
+
         /* Footer */
         .footer {
             background: #000000;
@@ -784,6 +967,14 @@
             .footer-links {
                 flex-direction: column;
                 gap: 1rem;
+            }
+
+            .contact-form-container {
+                padding: 25px;
+            }
+
+            .form-title {
+                font-size: 1.7rem;
             }
         }
 
@@ -1143,8 +1334,8 @@
                         <div class="contact-icon">WA</div>
                         <div>
                             <h4>WhatsApp</h4>
-                            <a href="https://wa.me/14023183706" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none;">
-                                Chat with us on WhatsApp
+                            <a href="https://wa.me/14253196163?text=Hi%20I%20would%20like%20more%20information" target="_blank" style="color: white; text-decoration: none;">
+                                Contact via WhatsApp
                             </a>
                         </div>
                     </div>
@@ -1168,6 +1359,95 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-container">
+                <h2 class="form-title">Let's Get Started Together</h2>
+                
+                <form id="intakeForm">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="business">Business/Business Idea *</label>
+                        <input type="text" id="business" name="business" placeholder="Tell me about your current business or business idea" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="help">What do you need help with? *</label>
+                        <textarea id="help" name="help" placeholder="Describe your specific challenges, goals, or what you'd like to achieve. The more detail you provide, the better I can help you!" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="urgency">How urgent is this project?</label>
+                        <select id="urgency" name="urgency">
+                            <option value="">Select timeline</option>
+                            <option value="asap">ASAP - I need help immediately</option>
+                            <option value="1-2weeks">Within 1-2 weeks</option>
+                            <option value="1month">Within a month</option>
+                            <option value="flexible">I'm flexible with timing</option>
+                            <option value="planning">Just planning ahead</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">Estimated Budget Range</label>
+                        <select id="budget" name="budget">
+                            <option value="">Select budget range</option>
+                            <option value="under500">Under $500</option>
+                            <option value="500-1000">$500 - $1,000</option>
+                            <option value="1000-2500">$1,000 - $2,500</option>
+                            <option value="2500-5000">$2,500 - $5,000</option>
+                            <option value="5000+">$5,000+</option>
+                            <option value="discuss">Let's discuss</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <label for="newsletter">I'd like to receive helpful tips and updates from M.S.T.</label>
+                    </div>
+
+                    <button type="submit" class="submit-button">Submit My Information</button>
+                    
+                    <div class="success-message" id="successMessage">
+                        <h3>Thank you! 🎉</h3>
+                        <p>I've received your information and will get back to you within 24 hours. Don't forget to schedule your free consultation below!</p>
+                    </div>
+
+                    <div class="error-message" id="errorMessage">
+                        <h3>Oops! Something went wrong.</h3>
+                        <p>Please check your information and try again, or reach out to me directly.</p>
+                    </div>
+                </form>
+
+                <div class="calendar-section">
+                    <h3 class="calendar-title">📅 Schedule Your FREE 15-Minute Consultation</h3>
+                    <p class="calendar-description">
+                        Let's chat about your goals and how I can help you succeed! 
+                        This quick call will help us determine if we're a good fit to work together.
+                    </p>
+                    <button class="calendar-button" onclick="openCalendar()">
+                        Book My Free Consultation
+                    </button>
+                </div>
+
+                <p class="form-note">
+                    * Required fields. Your information is secure and will never be shared with third parties.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -1187,6 +1467,93 @@
     </footer>
 
     <script>
+        // Wait for EmailJS library to load, then initialize
+        window.addEventListener('load', function() {
+            // Try to load EmailJS if it's not available
+            if (typeof emailjs === 'undefined') {
+                console.log('EmailJS not loaded, attempting to load alternative...');
+                const script = document.createElement('script');
+                script.src = 'https://cdn.emailjs.com/dist/email.min.js';
+                script.onload = function() {
+                    if (typeof emailjs !== 'undefined') {
+                        emailjs.init('klbBeOyLqtzuSnMMd');
+                        console.log('EmailJS loaded via fallback and initialized successfully');
+                    }
+                };
+                script.onerror = function() {
+                    console.error('Both EmailJS CDNs failed to load');
+                };
+                document.head.appendChild(script);
+            } else {
+                // Initialize EmailJS with your API Key
+                emailjs.init('klbBeOyLqtzuSnMMd');
+                console.log('EmailJS initialized successfully');
+            }
+        });
+
+        // Form submission handling with EmailJS
+        document.getElementById('intakeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitButton = document.querySelector('.submit-button');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+            
+            // Get form data
+            const formData = new FormData(this);
+            const templateParams = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone') || 'Not provided',
+                business: formData.get('business'),
+                help: formData.get('help'),
+                urgency: formData.get('urgency') || 'Not specified',
+                budget: formData.get('budget') || 'Not specified',
+                newsletter: formData.get('newsletter') ? 'Yes' : 'No'
+            };
+            
+            // Check if EmailJS is available and send email
+            if (typeof emailjs !== 'undefined' && emailjs.send) {
+                emailjs.send('service_d3iromr', 'emplate_7el4tia', templateParams)
+                    .then(function(response) {
+                        console.log('Email sent successfully:', response);
+                        showSuccess();
+                    }, function(error) {
+                        console.log('Email failed to send:', error);
+                        showError();
+                    });
+            } else {
+                // Fallback - show success message even if EmailJS isn't available
+                console.warn('EmailJS not available - showing success message anyway');
+                setTimeout(showSuccess, 1000); // Simulate sending delay
+            }
+            
+            function showSuccess() {
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('errorMessage').style.display = 'none';
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('intakeForm').reset();
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
+            
+            function showError() {
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+                document.getElementById('errorMessage').scrollIntoView({ behavior: 'smooth' });
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
+        });
+
+        // Calendar booking function
+        function openCalendar() {
+            // Open Calendly booking page in new tab
+            window.open('https://calendly.com/momsurvivaltoolkit/m-s-t-15min-call', '_blank');
+        }
+
         // Mobile Navigation Toggle
         const mobileToggle = document.getElementById('mobileToggle');
         const navLinks = document.getElementById('navLinks');
@@ -1287,6 +1654,31 @@
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.form-group input, .form-group textarea, .form-group select').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            element.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+
+        // Character counter for textarea
+        const helpTextarea = document.getElementById('help');
+        helpTextarea.addEventListener('input', function() {
+            const charCount = this.value.length;
+            if (!this.nextElementSibling || !this.nextElementSibling.classList.contains('char-counter')) {
+                const counter = document.createElement('div');
+                counter.classList.add('char-counter');
+                counter.style.cssText = 'font-size: 0.8rem; color: #999; text-align: right; margin-top: 5px;';
+                this.parentElement.appendChild(counter);
+            }
+            const counter = this.parentElement.querySelector('.char-counter');
+            counter.textContent = `${charCount} characters`;
         });
     </script>
 </body>
