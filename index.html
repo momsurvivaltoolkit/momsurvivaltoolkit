@@ -3,7 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M.S.T. - AI Solutions & Automation Portfolio</title>
+    <title>M.S.T. - AI Solutions & Automation Portfolio | Mom Survival Toolkit</title>
+    <meta name="description" content="Bilingual AI solutions creator and automation specialist empowering busy, neurodivergent, and entrepreneurial moms with smart tools to organize their lives and launch businesses.">
+    <meta name="keywords" content="AI solutions, automation, mom entrepreneur, ADHD support, bilingual services, chatbot development">
+    <meta name="author" content="M.S.T. - Mom Survival Toolkit">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    
+    <!-- Cookie Consent -->
+    <script>
+        window.cookieConsent = {
+            accepted: false,
+            show: function() {
+                document.getElementById('cookieConsent').style.display = 'block';
+            },
+            accept: function() {
+                localStorage.setItem('cookieConsent', 'accepted');
+                this.accepted = true;
+                document.getElementById('cookieConsent').style.display = 'none';
+                // Initialize analytics here if needed
+            },
+            check: function() {
+                return localStorage.getItem('cookieConsent') === 'accepted';
+            }
+        };
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!window.cookieConsent.check()) {
+                window.cookieConsent.show();
+            } else {
+                window.cookieConsent.accepted = true;
+            }
+        });
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -32,6 +72,60 @@
 
         .accent-gradient {
             background: linear-gradient(135deg, #2d2d2d 0%, #404040 50%, #2d2d2d 100%);
+        }
+
+        /* Cookie Consent Banner */
+        #cookieConsent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            color: white;
+            padding: 1rem;
+            z-index: 10000;
+            display: none;
+            border-top: 2px solid #DAA520;
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cookie-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cookie-accept {
+            background: linear-gradient(45deg, #DAA520, #FFD700);
+            color: #000;
+        }
+
+        .cookie-decline {
+            background: transparent;
+            color: white;
+            border: 1px solid #DAA520;
         }
 
         /* Header */
@@ -135,6 +229,67 @@
             background: white;
             margin: 3px 0;
             transition: 0.3s;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            color: white;
+            border: 1px solid #DAA520;
+        }
+
+        .close {
+            color: #DAA520;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #FFD700;
+        }
+
+        .modal h2 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #DAA520;
+            padding-bottom: 0.5rem;
+        }
+
+        .modal h3 {
+            color: #FFD700;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .modal p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .modal ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         /* Hero Section */
@@ -306,7 +461,7 @@
             margin-top: 0.5rem;
         }
 
-        /* Portfolio Section - FIXED: Changed to black gradient */
+        /* Portfolio Section */
         .portfolio {
             padding: 100px 0;
             background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%);
@@ -464,7 +619,7 @@
             line-height: 1.6;
         }
 
-        /* Contact Section - FIXED: Changed to black gradient */
+        /* Contact Section */
         .contact {
             padding: 100px 0;
             background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%);
@@ -485,6 +640,8 @@
             display: flex;
             flex-direction: column;
             gap: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .contact-item {
@@ -515,43 +672,36 @@
             font-size: 1.3rem;
         }
 
-        .contact-form {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 10px;
-            background: rgba(255,255,255,0.1);
+        /* Footer */
+        .footer {
+            background: #000000;
             color: white;
-            font-size: 1rem;
+            padding: 3rem 0 1rem;
+            text-align: center;
         }
 
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255,255,255,0.7);
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
 
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
+        .footer-links a {
+            color: #DAA520;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #FFD700;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            color: #999;
         }
 
         /* Animations */
@@ -619,6 +769,22 @@
             .services-grid {
                 grid-template-columns: 1fr;
             }
+
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+                padding: 1rem;
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -637,6 +803,19 @@
     </style>
 </head>
 <body>
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <p>We use cookies to improve your experience and analyze website traffic. By continuing to use this site, you consent to our use of cookies. <a href="javascript:void(0)" onclick="openModal('privacy')" style="color: #DAA520;">Learn more</a></p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-accept" onclick="window.cookieConsent.accept()">Accept</button>
+                <button class="cookie-btn cookie-decline" onclick="document.getElementById('cookieConsent').style.display='none'">Decline</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header id="header">
         <nav>
@@ -658,6 +837,105 @@
             </div>
         </nav>
     </header>
+
+    <!-- Modals -->
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('privacy')">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p><strong>Last updated:</strong> December 2024</p>
+            
+            <h3>Information We Collect</h3>
+            <p>We collect information you provide directly to us, such as when you contact us through our website forms or communicate with us via email or messaging platforms.</p>
+            
+            <h3>How We Use Your Information</h3>
+            <ul>
+                <li>To respond to your inquiries and provide customer support</li>
+                <li>To improve our website and services</li>
+                <li>To send you updates about our services (with your consent)</li>
+                <li>To comply with legal obligations</li>
+            </ul>
+            
+            <h3>Information Sharing</h3>
+            <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy or as required by law.</p>
+            
+            <h3>Cookies and Analytics</h3>
+            <p>We use cookies and similar technologies to analyze website traffic and improve user experience. You can control cookie preferences through your browser settings.</p>
+            
+            <h3>Data Security</h3>
+            <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+            
+            <h3>Your Rights</h3>
+            <p>You have the right to access, update, or delete your personal information. Contact us at momsurvivaltoolkit@gmail.com for any privacy-related requests.</p>
+            
+            <h3>Contact Information</h3>
+            <p>For questions about this Privacy Policy, contact us at momsurvivaltoolkit@gmail.com</p>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('terms')">&times;</span>
+            <h2>Terms of Service</h2>
+            <p><strong>Last updated:</strong> December 2024</p>
+            
+            <h3>Acceptance of Terms</h3>
+            <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.</p>
+            
+            <h3>Services Provided</h3>
+            <p>M.S.T. (Mom Survival Toolkit) provides AI solutions, automation services, and business consulting for entrepreneurs, with a focus on supporting busy mothers and neurodivergent individuals.</p>
+            
+            <h3>User Obligations</h3>
+            <ul>
+                <li>Provide accurate information when contacting us</li>
+                <li>Use our services for lawful purposes only</li>
+                <li>Respect intellectual property rights</li>
+                <li>Not engage in any harmful or disruptive activities</li>
+            </ul>
+            
+            <h3>Intellectual Property</h3>
+            <p>All content on this website, including text, graphics, logos, and software, is owned by M.S.T. or its licensors and is protected by copyright and other intellectual property laws.</p>
+            
+            <h3>Limitation of Liability</h3>
+            <p>M.S.T. shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services.</p>
+            
+            <h3>Service Modifications</h3>
+            <p>We reserve the right to modify or discontinue our services at any time without prior notice.</p>
+            
+            <h3>Governing Law</h3>
+            <p>These terms shall be governed by and construed in accordance with applicable laws.</p>
+        </div>
+    </div>
+
+    <!-- Cookie Policy Modal -->
+    <div id="cookieModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('cookie')">&times;</span>
+            <h2>Cookie Policy</h2>
+            <p><strong>Last updated:</strong> December 2024</p>
+            
+            <h3>What Are Cookies</h3>
+            <p>Cookies are small text files stored on your device when you visit our website. They help us provide you with a better experience by remembering your preferences.</p>
+            
+            <h3>Types of Cookies We Use</h3>
+            <ul>
+                <li><strong>Essential Cookies:</strong> Required for the website to function properly</li>
+                <li><strong>Analytics Cookies:</strong> Help us understand how visitors interact with our website</li>
+                <li><strong>Preference Cookies:</strong> Remember your settings and preferences</li>
+            </ul>
+            
+            <h3>Managing Cookies</h3>
+            <p>You can control and manage cookies through your browser settings. Please note that disabling certain cookies may affect website functionality.</p>
+            
+            <h3>Third-Party Cookies</h3>
+            <p>We may use third-party services like Google Analytics that place cookies on your device. These services have their own privacy policies.</p>
+            
+            <h3>Contact Us</h3>
+            <p>If you have questions about our cookie policy, contact us at momsurvivaltoolkit@gmail.com</p>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section id="home" class="hero gradient-bg">
@@ -860,7 +1138,7 @@
         <div class="container">
             <h2 class="section-title">Let's Connect</h2>
             <div class="contact-content">
-                <div class="contact-info" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto;">
+                <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-icon">WA</div>
                         <div>
@@ -892,6 +1170,21 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="javascript:void(0)" onclick="openModal('privacy')">Privacy Policy</a>
+                <a href="javascript:void(0)" onclick="openModal('terms')">Terms of Service</a>
+                <a href="javascript:void(0)" onclick="openModal('cookie')">Cookie Policy</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 M.S.T. - Mom Survival Toolkit. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Mobile Navigation Toggle
@@ -944,6 +1237,34 @@
                 alert(`${projectId} project details coming soon!`);
             }
         }
+
+        // Modal Functions
+        function openModal(type) {
+            const modal = document.getElementById(type + 'Modal');
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(type) {
+            const modal = document.getElementById(type + 'Modal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
 
         // Intersection Observer for Animations
         const observerOptions = {
