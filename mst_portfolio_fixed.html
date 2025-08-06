@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.S.T. - AI Solutions & Automation Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%);
+        }
+
+        .gold-gradient {
+            background: linear-gradient(135deg, #DAA520 0%, #FFD700 50%, #B8860B 100%);
+        }
+
+        .dark-gradient {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%);
+        }
+
+        .accent-gradient {
+            background: linear-gradient(135deg, #2d2d2d 0%, #404040 50%, #2d2d2d 100%);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.9);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(218, 165, 32, 0.3);
+        }
+
+        .header-scroll {
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid rgba(218, 165, 32, 0.5);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #DAA520 0%, #FFD700 50%, #B8860B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+            transition: transform 0.3s ease;
+            font-family: Georgia, serif;
+        }
+
+        .logo-text:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            color: #FFD700;
+            opacity: 0.8;
+            margin-left: 0.5rem;
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #DAA520, #FFD700);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(218, 165, 32, 0.1), rgba(255, 215, 0, 0.05));
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #DAA520, #FFD700);
+            color: #000000;
+            box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+            font-weight: 700;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #FFD700;
+            border: 2px solid #DAA520;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(45deg, #DAA520, #FFD700);
+            color: #000000;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a2e;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #DAA520, #FFD700);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #DAA520, #FF6347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* Portfolio Section - FIXED: Changed to black gradient */
+        .portfolio {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%);
+            color: white;
+        }
+
+        .portfolio .section-title {
+            color: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .project-description {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            color: #cccccc;
+        }
+
+        .project-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-features li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+            color: #cccccc;
+        }
+
+        .project-features li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #DAA520;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, #DAA520, #FFD700);
+            color: #000000;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: none;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #DAA520, #FFD700, #FF6347);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #1a1a2e;
+        }
+
+        .service-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Section - FIXED: Changed to black gradient */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%);
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact-content {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(26, 26, 46, 0.95);
+                flex-direction: column;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .portfolio-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <div class="logo-text">M.S.T.</div>
+                <div class="logo-subtitle">Mom You Got This</div>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero gradient-bg">
+        <div class="hero-content">
+            <h1 class="floating">M.S.T.</h1>
+            <p class="subtitle">Mom Survival Toolkit</p>
+            <p>Bilingual AI solutions creator and automation specialist empowering busy, neurodivergent, and entrepreneurial moms with smart tools to organize their lives, launch businesses, and thrive without overwhelm.</p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Let's Connect</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am a bilingual (English & Spanish) AI solutions creator and automation specialist with a passion for building innovative, user-friendly systems. I design custom AI chatbots, automation workflows, and interactive platforms for businesses and entrepreneurs, blending functionality with strong branding.</p>
+                    <p>My mission is to empower busy, neurodivergent, and entrepreneurial moms with practical systems, AI-powered solutions, and compassionate guidance to help them reclaim time, energy, and focus while launching successful businesses.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Featured Projects</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Languages</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Mom-Focused</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">AI</div>
+                        <div class="stat-label">Powered Solutions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="portfolio-grid">
+                <div class="project-card" onclick="openProject('teyl-noir')">
+                    <div class="project-header">
+                        <div class="project-icon gold-gradient">TN</div>
+                        <div class="project-title">Teyl Noir Navigation</div>
+                    </div>
+                    <div class="project-description">
+                        A literary-inspired GPS navigation app that transforms daily commutes into immersive adventures with romance novel character archetypes.
+                    </div>
+                    <ul class="project-features">
+                        <li>AI voice integration</li>
+                        <li>Custom character guides</li>
+                        <li>Real-time navigation</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">AI</span>
+                        <span class="tech-tag">Voice</span>
+                        <span class="tech-tag">GPS</span>
+                        <span class="tech-tag">Mobile</span>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openProject('viroka')">
+                    <div class="project-header">
+                        <div class="project-icon gold-gradient">VK</div>
+                        <div class="project-title">ViRoKa Market & Ecosystem</div>
+                    </div>
+                    <div class="project-description">
+                        A cross-border e-commerce platform connecting Colombians abroad with local stores in Colombia, enabling USD purchases with local delivery.
+                    </div>
+                    <ul class="project-features">
+                        <li>Secure USD payment gateway</li>
+                        <li>Local store integration</li>
+                        <li>Multi-platform ecosystem</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">E-commerce</span>
+                        <span class="tech-tag">Payment</span>
+                        <span class="tech-tag">Multi-platform</span>
+                        <span class="tech-tag">Bilingual</span>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openProject('smart-mom')">
+                    <div class="project-header">
+                        <div class="project-icon gold-gradient">SM</div>
+                        <div class="project-title">Smart Mom Method</div>
+                    </div>
+                    <div class="project-description">
+                        A platform designed to help ADHD moms organize their lives and launch AI-powered businesses with quizzes, custom plans, and assistants.
+                    </div>
+                    <ul class="project-features">
+                        <li>ADHD-friendly tools</li>
+                        <li>AI business launch guides</li>
+                        <li>Interactive quizzes</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">ADHD</span>
+                        <span class="tech-tag">AI</span>
+                        <span class="tech-tag">Business</span>
+                        <span class="tech-tag">Organization</span>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openProject('leomind')">
+                    <div class="project-header">
+                        <div class="project-icon gold-gradient">LM</div>
+                        <div class="project-title">LeoMind Wellness Assistant</div>
+                    </div>
+                    <div class="project-description">
+                        A real-time AI voice assistant for wellness tracking, habit building, and ADHD/executive function support with personalized routines.
+                    </div>
+                    <ul class="project-features">
+                        <li>Hydration tracking</li>
+                        <li>Herbal routine reminders</li>
+                        <li>Personalized routines</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">Voice AI</span>
+                        <span class="tech-tag">Wellness</span>
+                        <span class="tech-tag">Real-time</span>
+                        <span class="tech-tag">ADHD</span>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openProject('mst-branding')">
+                    <div class="project-header">
+                        <div class="project-icon gold-gradient">MB</div>
+                        <div class="project-title">M.S.T. Branding</div>
+                    </div>
+                    <div class="project-description">
+                        Complete brand identity and visual design for the "Mom Survival Toolkit" project with golden gradients and empowering messaging.
+                    </div>
+                    <ul class="project-features">
+                        <li>Golden gradient branding</li>
+                        <li>Empowering messaging</li>
+                        <li>Visual identity system</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">Branding</span>
+                        <span class="tech-tag">Design</span>
+                        <span class="tech-tag">Identity</span>
+                        <span class="tech-tag">Visual</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Services Offered</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon gold-gradient">AI</div>
+                    <h3 class="service-title">Custom AI Chatbot Development</h3>
+                    <p class="service-description">Design and implement intelligent chatbots tailored to your business needs, with multilingual support and advanced AI capabilities.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon gold-gradient">AUTO</div>
+                    <h3 class="service-title">Automation Workflow Design</h3>
+                    <p class="service-description">Streamline your business processes with custom automation solutions that save time and reduce manual work.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon gold-gradient">CRM</div>
+                    <h3 class="service-title">CRM & Database Integration</h3>
+                    <p class="service-description">Connect and optimize your customer relationship management systems with seamless database integration.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon gold-gradient">LANG</div>
+                    <h3 class="service-title">Multi-language Platform Creation</h3>
+                    <p class="service-description">Build bilingual platforms (English & Spanish) that reach broader audiences and expand your market reach.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon gold-gradient">UX</div>
+                    <h3 class="service-title">Branding and UX/UI Design</h3>
+                    <p class="service-description">Create compelling brand identities and user experiences that resonate with your target audience.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon gold-gradient">MOM</div>
+                    <h3 class="service-title">Mom-Focused Business Solutions</h3>
+                    <p class="service-description">Specialized tools and strategies designed specifically for busy, neurodivergent, and entrepreneurial mothers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-content">
+                <div class="contact-info" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto;">
+                    <div class="contact-item">
+                        <div class="contact-icon">WA</div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/14253196163?text=Hi%20I%20would%20like%20more%20information" target="_blank" style="color: white; text-decoration: none;">
+                                Contact via WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">IN</div>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <a href="https://www.linkedin.com/in/mst-teyl-noir/" target="_blank" style="color: white; text-decoration: none;">
+                                Connect with me
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">FV</div>
+                        <div>
+                            <h4>Fiverr Profile</h4>
+                            <a href="https://www.fiverr.com/mst_teylnoir" target="_blank" style="color: white; text-decoration: none;">
+                                View Services
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('header-scroll');
+            } else {
+                header.classList.remove('header-scroll');
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Project Card Click Handler
+        function openProject(projectId) {
+            const projectUrls = {
+                'teyl-noir': 'https://teylnoir.com/',
+                'viroka': 'https://market.virokavia.com/',
+                'smart-mom': 'https://virokavia.com/',
+                'leomind': 'https://assistente.virokavia.com/',
+                'mst-branding': '#'
+            };
+            
+            if (projectUrls[projectId] && projectUrls[projectId] !== '#') {
+                window.open(projectUrls[projectId], '_blank');
+            } else {
+                alert(`${projectId} project details coming soon!`);
+            }
+        }
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.project-card, .service-card, .stat-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
