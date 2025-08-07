@@ -1516,7 +1516,7 @@
             
             // Check if EmailJS is available and send email
             if (typeof emailjs !== 'undefined' && emailjs.send) {
-                emailjs.send('service_d3iromr', 'emplate_7el4tia', templateParams)
+                emailjs.send('service_d3iromr', 'template_7el4tia', templateParams)
                     .then(function(response) {
                         console.log('Email sent successfully:', response);
                         showSuccess();
