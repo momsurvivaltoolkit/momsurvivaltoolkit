@@ -1261,26 +1261,26 @@
                     </div>
                 </div>
 
-                <div class="project-card" onclick="openProject('mst-branding')">
-                    <div class="project-header">
-                        <div class="project-icon gold-gradient">MB</div>
-                        <div class="project-title">M.S.T. Branding</div>
-                    </div>
-                    <div class="project-description">
-                        Complete brand identity and visual design for the "Mom Survival Toolkit" project with golden gradients and empowering messaging.
-                    </div>
-                    <ul class="project-features">
-                        <li>Golden gradient branding</li>
-                        <li>Empowering messaging</li>
-                        <li>Visual identity system</li>
-                    </ul>
-                    <div class="project-tech">
-                        <span class="tech-tag">Branding</span>
-                        <span class="tech-tag">Design</span>
-                        <span class="tech-tag">Identity</span>
-                        <span class="tech-tag">Visual</span>
-                    </div>
-                </div>
+             <div class="project-card" onclick="openProject('teyl-noir-app')">
+    <div class="project-header">
+        <div class="project-icon gold-gradient">TN</div>
+        <div class="project-title">Teyl Noir Navigation App</div>
+    </div>
+    <div class="project-description">
+        A mobile application companion for the Teyl Noir Navigation experience, offering immersive character-guided GPS navigation with progressive web app functionality.
+    </div>
+    <ul class="project-features">
+        <li>Progressive Web App (PWA)</li>
+        <li>Mobile-optimized interface</li>
+        <li>Offline navigation capabilities</li>
+    </ul>
+    <div class="project-tech">
+        <span class="tech-tag">PWA</span>
+        <span class="tech-tag">Mobile</span>
+        <span class="tech-tag">App</span>
+        <span class="tech-tag">Navigation</span>
+    </div>
+</div>
             </div>
         </div>
     </section>
@@ -1590,20 +1590,20 @@
 
         // Project Card Click Handler
         function openProject(projectId) {
-            const projectUrls = {
-                'teyl-noir': 'https://teylnoir.com/',
-                'viroka': 'https://virokavia.com/',
-                'smart-mom': 'https://smartmommethod.com/',
-                'leomind': 'https://leo-mind-momsurvivaltool.replit.app/',
-                'mst-branding': '#'
-            };
-            
-            if (projectUrls[projectId] && projectUrls[projectId] !== '#') {
-                window.open(projectUrls[projectId], '_blank');
-            } else {
-                alert(`${projectId} project details coming soon!`);
-            }
-        }
+    const projectUrls = {
+        'teyl-noir': 'https://teylnoir.com/',
+        'teyl-noir-app': 'https://app.teylnoir.com/',
+        'viroka': 'https://market.virokavia.com/',
+        'smart-mom': 'https://virokavia.com/',
+        'leomind': 'https://assistente.virokavia.com/'
+    };
+    
+    if (projectUrls[projectId]) {
+        window.open(projectUrls[projectId], '_blank');
+    } else {
+        alert(`${projectId} project details coming soon!`);
+    }
+}
 
         // Modal Functions
         function openModal(type) {
